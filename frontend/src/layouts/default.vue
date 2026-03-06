@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { useAuthStore } from '../stores/authStore'
 
 const authStore = useAuthStore()
-const route = useRoute()
 const router = useRouter()
 const open = ref(false)
 

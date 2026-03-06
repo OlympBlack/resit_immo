@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useBienStore } from '../stores/bienStore'
 import { useLocataireStore } from '../stores/locataireStore'
 import { useContratStore } from '../stores/contratStore'

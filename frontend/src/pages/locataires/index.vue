@@ -2,12 +2,15 @@
 import { ref, computed, h, onMounted, resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
 import type { Locataire } from '../../types'
+import { useToast } from '@nuxt/ui/composables'
+import { useRouter } from 'vue-router'
 import { useLocataireStore } from '../../stores/locataireStore'
 
 const UButton = resolveComponent('UButton')
 const UDropdownMenu = resolveComponent('UDropdownMenu')
 
 const locataireStore = useLocataireStore()
+const router = useRouter()
 const toast = useToast()
 const search = ref('')
 
@@ -25,6 +28,13 @@ const filtered = computed(() => {
 
 function getRowItems(loc: Locataire) {
   return [[
+    {
+      label: 'Modifier',
+      icon: 'i-lucide-pencil',
+      onSelect() {
+        router.push(`/locataires/${loc.id}`)
+      },
+    },
     {
       label: 'Supprimer',
       icon: 'i-lucide-trash',

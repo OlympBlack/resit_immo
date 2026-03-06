@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import type { BienForm } from '../../types'
+import { useToast } from '@nuxt/ui/composables'
 import { useBienStore } from '../../stores/bienStore'
-import { useLocataireStore } from '../../stores/locataireStore'
 import api from '../../plugins/axios'
 
 const router = useRouter()
@@ -18,7 +17,7 @@ onMounted(async () => {
   proprietaires.value = res.data.data
 })
 
-const form = ref<BienForm>({
+const form = ref<any>({
   titre: '',
   type: '',
   adresse: '',

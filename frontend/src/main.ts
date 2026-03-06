@@ -7,6 +7,7 @@ import { routes, handleHotUpdate } from 'vue-router/auto-routes'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { createPinia } from 'pinia'
 import ui from '@nuxt/ui/vue-plugin'
+import { useAuthStore } from './stores/authStore'
 
 import App from './App.vue'
 
@@ -19,11 +20,19 @@ const router = createRouter({
 })
 
 // ─── Middleware de protection des routes ──────────────────────────────────────
-const PUBLIC_ROUTES = ['/login']
+router.beforeEach(async (to) => {
+  const authStore = useAuthStore(pinia)
+  const token = authStore.token
+  const isPublic = ['/login'].includes(to.path)
 
-router.beforeEach((to) => {
-  const token = localStorage.getItem('auth_token')
-  const isPublic = PUBLIC_ROUTES.includes(to.path)
+  // Si on a un token mais pas d'utilisateur, on essaie de le charger
+  if (token && !authStore.user && !isPublic) {
+    try {
+      await authStore.fetchMe()
+    } catch {
+      return { path: '/login' }
+    }
+  }
 
   if (!token && !isPublic) {
     return { path: '/login' }

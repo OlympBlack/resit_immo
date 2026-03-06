@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref, computed, h, onMounted, resolveComponent } from 'vue'
+import { useRouter } from 'vue-router'
 import type { TableColumn } from '@nuxt/ui'
 import type { Contrat } from '../../types'
+import { useToast } from '@nuxt/ui/composables'
 import { useContratStore } from '../../stores/contratStore'
 
 const UBadge = resolveComponent('UBadge')
@@ -9,6 +11,7 @@ const UButton = resolveComponent('UButton')
 const UDropdownMenu = resolveComponent('UDropdownMenu')
 
 const contratStore = useContratStore()
+const router = useRouter()
 const toast = useToast()
 
 const filtre = ref<'tous' | 'actif' | 'termine' | 'resilie'>('actif')
@@ -24,6 +27,13 @@ const statutColor = (s: string) => ({ actif: 'success', termine: 'neutral', resi
 
 function getRowItems(contrat: Contrat) {
   return [[
+    {
+      label: 'Modifier',
+      icon: 'i-lucide-pencil',
+      onSelect() {
+        router.push(`/contrats/${contrat.id}`)
+      },
+    },
     {
       label: 'Marquer terminé',
       icon: 'i-lucide-check',

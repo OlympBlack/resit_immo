@@ -63,6 +63,26 @@ export const useContratStore = defineStore('contrats', () => {
         }
     }
 
+    async function updateContrat(id: number, form: Partial<ContratForm>): Promise<Contrat> {
+        loading.value = true
+        error.value = null
+        try {
+            const response = await api.put(`/contrats/${id}`, form)
+            const updated = response.data.data
+            const idx = contrats.value.findIndex(c => c.id === id)
+            if (idx !== -1) contrats.value[idx] = updated
+            contrat.value = updated
+            return updated
+        }
+        catch (err: any) {
+            error.value = err.response?.data?.message ?? 'Erreur lors de la mise à jour.'
+            throw err
+        }
+        finally {
+            loading.value = false
+        }
+    }
+
     async function updateStatut(id: number, statut: Contrat['statut']): Promise<void> {
         loading.value = true
         try {
@@ -96,6 +116,6 @@ export const useContratStore = defineStore('contrats', () => {
 
     return {
         contrats, contrat, loading, error, contratsActifs,
-        fetchContrats, fetchContrat, createContrat, updateStatut, deleteContrat,
+        fetchContrats, fetchContrat, createContrat, updateContrat, updateStatut, deleteContrat,
     }
 })

@@ -58,6 +58,26 @@ export const useLocataireStore = defineStore('locataires', () => {
         }
     }
 
+    async function updateLocataire(id: number, form: LocataireForm): Promise<Locataire> {
+        loading.value = true
+        error.value = null
+        try {
+            const response = await api.put(`/locataires/${id}`, form)
+            const updated = response.data.data
+            const idx = locataires.value.findIndex(l => l.id === id)
+            if (idx !== -1) locataires.value[idx] = updated
+            locataire.value = updated
+            return updated
+        }
+        catch (err: any) {
+            error.value = err.response?.data?.message ?? 'Erreur lors de la mise à jour.'
+            throw err
+        }
+        finally {
+            loading.value = false
+        }
+    }
+
     async function deleteLocataire(id: number): Promise<void> {
         loading.value = true
         try {
@@ -73,5 +93,5 @@ export const useLocataireStore = defineStore('locataires', () => {
         }
     }
 
-    return { locataires, locataire, loading, error, fetchLocataires, fetchLocataire, createLocataire, deleteLocataire }
+    return { locataires, locataire, loading, error, fetchLocataires, fetchLocataire, createLocataire, updateLocataire, deleteLocataire }
 })

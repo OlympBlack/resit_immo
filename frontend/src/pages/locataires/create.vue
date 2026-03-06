@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useToast } from '@nuxt/ui/composables'
 import type { LocataireForm } from '../../types'
 import { useLocataireStore } from '../../stores/locataireStore'
 

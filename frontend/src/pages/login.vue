@@ -1,8 +1,10 @@
-<script setup lang="ts">
-// Utiliser le layout sans sidebar
-defineOptions({ layout: 'auth' })
+<route lang="yaml">
+meta:
+  layout: auth
+</route>
 
-import { ref, reactive } from 'vue'
+<script setup lang="ts">
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/authStore'
 

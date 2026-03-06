@@ -2,6 +2,7 @@
 import { ref, computed, h, onMounted, resolveComponent } from 'vue'
 import { useRouter } from 'vue-router'
 import type { TableColumn } from '@nuxt/ui'
+import { useToast } from '@nuxt/ui/composables'
 import type { Bien } from '../../types'
 import { useBienStore } from '../../stores/bienStore'
 

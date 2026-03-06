@@ -109,8 +109,9 @@ export interface Stat {
   title: string
   icon: string
   value: number | string
-  color: string
-  to: string
+  color?: string
+  to?: string
+  variation?: number
 }
 
 // ─── Legacy types (conservés pour les composants existants) ───────────────────
@@ -131,4 +132,38 @@ export interface User {
 export interface Range {
   start: Date
   end: Date
+}
+
+export interface Mail {
+  id: number
+  unread?: boolean
+  from: { name: string; email: string; avatar?: AvatarProps }
+  subject: string
+  body: string
+  date: string
+}
+
+export interface Member {
+  id: number
+  name: string
+  username: string
+  email: string
+  role: 'admin' | 'member'
+  avatar?: AvatarProps
+}
+
+export interface Notification {
+  id: number
+  unread?: boolean
+  sender: { name: string; avatar?: AvatarProps }
+  body: string
+  date: string
+}
+
+export interface Sale {
+  id: string
+  date: string
+  status: 'paid' | 'failed' | 'refunded'
+  email: string
+  amount: number
 }

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { BienForm } from '../../types'
+import { useToast } from '@nuxt/ui/composables'
 import { useBienStore } from '../../stores/bienStore'
 import api from '../../plugins/axios'
 
-const route = useRoute()
+const route = useRoute('/biens/[id]')
 const router = useRouter()
 const bienStore = useBienStore()
 const toast = useToast()
@@ -15,7 +15,7 @@ const id = Number(route.params.id)
 interface ProprietaireSimple { id: number; nom: string; prenom: string }
 const proprietaires = ref<ProprietaireSimple[]>([])
 
-const form = ref<BienForm>({
+const form = ref<any>({
   titre: '',
   type: '',
   adresse: '',

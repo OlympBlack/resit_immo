@@ -33,6 +33,48 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/biens/': RouteRecordInfo<
+      '/biens/',
+      '/biens',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/biens/[id]': RouteRecordInfo<
+      '/biens/[id]',
+      '/biens/:id',
+      { id: ParamValue<true> },
+      { id: ParamValue<false> },
+      | never
+    >,
+    '/biens/create': RouteRecordInfo<
+      '/biens/create',
+      '/biens/create',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/contrats/': RouteRecordInfo<
+      '/contrats/',
+      '/contrats',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/contrats/[id]': RouteRecordInfo<
+      '/contrats/[id]',
+      '/contrats/:id',
+      { id: ParamValue<true> },
+      { id: ParamValue<false> },
+      | never
+    >,
+    '/contrats/create': RouteRecordInfo<
+      '/contrats/create',
+      '/contrats/create',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/customers': RouteRecordInfo<
       '/customers',
       '/customers',
@@ -43,6 +85,34 @@ declare module 'vue-router/auto-routes' {
     '/inbox': RouteRecordInfo<
       '/inbox',
       '/inbox',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/locataires/': RouteRecordInfo<
+      '/locataires/',
+      '/locataires',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/locataires/[id]': RouteRecordInfo<
+      '/locataires/[id]',
+      '/locataires/:id',
+      { id: ParamValue<true> },
+      { id: ParamValue<false> },
+      | never
+    >,
+    '/locataires/create': RouteRecordInfo<
+      '/locataires/create',
+      '/locataires/create',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/login': RouteRecordInfo<
+      '/login',
+      '/login',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -104,6 +174,42 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/biens/index.vue': {
+      routes:
+        | '/biens/'
+      views:
+        | never
+    }
+    'src/pages/biens/[id].vue': {
+      routes:
+        | '/biens/[id]'
+      views:
+        | never
+    }
+    'src/pages/biens/create.vue': {
+      routes:
+        | '/biens/create'
+      views:
+        | never
+    }
+    'src/pages/contrats/index.vue': {
+      routes:
+        | '/contrats/'
+      views:
+        | never
+    }
+    'src/pages/contrats/[id].vue': {
+      routes:
+        | '/contrats/[id]'
+      views:
+        | never
+    }
+    'src/pages/contrats/create.vue': {
+      routes:
+        | '/contrats/create'
+      views:
+        | never
+    }
     'src/pages/customers.vue': {
       routes:
         | '/customers'
@@ -113,6 +219,30 @@ declare module 'vue-router/auto-routes' {
     'src/pages/inbox.vue': {
       routes:
         | '/inbox'
+      views:
+        | never
+    }
+    'src/pages/locataires/index.vue': {
+      routes:
+        | '/locataires/'
+      views:
+        | never
+    }
+    'src/pages/locataires/[id].vue': {
+      routes:
+        | '/locataires/[id]'
+      views:
+        | never
+    }
+    'src/pages/locataires/create.vue': {
+      routes:
+        | '/locataires/create'
+      views:
+        | never
+    }
+    'src/pages/login.vue': {
+      routes:
+        | '/login'
       views:
         | never
     }
